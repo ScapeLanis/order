@@ -97,3 +97,6 @@ Jede Bestellung besitzt eine eindeutige Herkunft. Wenn dieselbe Abschlussdatei e
 
 ## Bargeld-Auswahl
 Im Bezahlfenster stehen zuerst stilisierte Euro-Scheine (5–200 €), danach runde Euro-Münzen (2 € bis 1 Cent). Die Darstellung orientiert sich an den typischen Farben, verwendet aber keine exakten Reproduktionen offizieller Banknotenmotive.
+## Vollbild-Barzahlung
+
+Die Barzahlung nutzt jetzt den kompletten Bildschirm. Rückgeld und empfohlene Stückelung werden deutlich größer dargestellt; Scheine und Münzen sind visuell getrennt.

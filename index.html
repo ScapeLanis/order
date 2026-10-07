@@ -46,61 +46,104 @@
     @media(max-width:760px){body{padding-bottom:calc(150px + env(safe-area-inset-bottom))}.shell{padding:14px 12px 25px}.topbar{margin-bottom:13px}.brand p{max-width:220px}.desktop-grid{display:block}.rail,.cart-panel{display:none}.bottom-nav{display:grid}.mobile-cart{display:flex}.view:not(.active){display:none}.products{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}.product{min-height:132px;padding:13px}.hero{align-items:center}.hero p{font-size:.8rem}.stats-grid{grid-template-columns:repeat(2,1fr);gap:8px}.kpi{padding:13px}.kpi strong{font-size:1.25rem}.menu-form{grid-template-columns:1fr 1fr}.menu-form .namefield{grid-column:1/-1}.menu-form .savefield{grid-column:1/-1}.menu-form .savefield button{width:100%}.card{padding:13px}.barrow{grid-template-columns:minmax(70px,.9fr) 1.4fr auto}.top-actions .ghost-label{display:none}}
     @media(max-width:390px){.products{grid-template-columns:1fr 1fr}.p-name{font-size:.92rem}.p-icon{font-size:1.8rem}.cash-grid{grid-template-columns:repeat(2,1fr)}.note-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.coin-btn{width:56px;height:56px;flex-basis:56px}.stats-grid{grid-template-columns:1fr 1fr}}
   
-    /* Kompakter Bezahl-Screen: alles ohne Scrollen sichtbar */
-    #payDialog{width:min(560px,calc(100% - 12px));max-height:calc(100dvh - 10px);overflow:hidden}
-    #payDialog .pay-modal{padding:11px;max-height:calc(100dvh - 12px);overflow:hidden;display:flex;flex-direction:column}
-    #payDialog .modalhead{min-height:36px}
-    #payDialog .modalhead h2{font-size:1rem}
-    #payDialog .close{width:36px;height:36px}
-    #payDialog .pay-total{padding:9px 12px;margin:7px 0 6px;border-radius:14px}
-    #payDialog .pay-total small{font-size:.72rem}
-    #payDialog .pay-total strong{font-size:1.9rem;margin-top:0}
-    #payDialog .cash-label{font-size:.7rem;margin-bottom:4px}
-    #payDialog .cash-grid{gap:6px;margin-top:5px}
-    #payDialog .cash-grid button{min-height:40px;border-radius:11px;font-size:.83rem;padding:0 6px}
-    #payDialog .tender-box{margin-top:7px;padding:8px 9px;border-radius:14px}
-    #payDialog .tender-head strong{font-size:1.25rem}
-    #payDialog .tender-head span{font-size:.68rem}
-    #payDialog .note-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:6px;margin-top:5px}
-    #payDialog .banknote{aspect-ratio:auto;min-height:47px;padding:6px 8px;border-radius:8px}
+    /* Vollbild-Bezahlmodus: Bargeld nutzt die komplette Fläche */
+    #payDialog{inset:0;width:100vw;max-width:none;height:100dvh;max-height:none;margin:0;border:0;border-radius:0;overflow:hidden;background:#090c0f}
+    #payDialog::backdrop{background:#090c0f}
+    #payDialog .pay-modal{box-sizing:border-box;width:100%;height:100dvh;max-height:none;padding:calc(10px + env(safe-area-inset-top)) 12px calc(10px + env(safe-area-inset-bottom));overflow:hidden;display:flex;flex-direction:column;background:linear-gradient(180deg,#0c1014,#090c0f)}
+    #payDialog .modalhead{min-height:42px;flex:0 0 auto}
+    #payDialog .modalhead h2{font-size:1.05rem}
+    #payDialog .close{width:40px;height:40px}
+    #payDialog #payContent{flex:1;min-height:0;display:grid;grid-template-rows:auto auto auto minmax(0,1fr) auto auto;align-content:stretch;gap:6px}
+    #payDialog .pay-total{padding:8px 12px;margin:0;border-radius:15px;background:#0f151b}
+    #payDialog .pay-total small{font-size:.72rem;letter-spacing:.08em;text-transform:uppercase}
+    #payDialog .pay-total strong{font-size:2rem;margin-top:0}
+    #payDialog .cash-label{font-size:.68rem;margin:0;color:#8f9baa;letter-spacing:.07em;text-transform:uppercase}
+    #payDialog .cash-grid{gap:7px;margin:0;grid-template-columns:repeat(3,1fr)}
+    #payDialog .cash-grid button{min-height:42px;border-radius:12px;font-size:.86rem;padding:0 7px}
+    #payDialog .tender-box{min-height:0;margin:0;padding:8px 10px;border-radius:15px;overflow:hidden;display:flex;flex-direction:column;background:#0d1217}
+    #payDialog .tender-head{flex:0 0 auto}
+    #payDialog .tender-head strong{font-size:1.35rem}
+    #payDialog .tender-head span{font-size:.67rem;letter-spacing:.08em}
+    #payDialog .note-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:7px;margin-top:5px;flex:0 0 auto}
+    #payDialog .banknote{aspect-ratio:auto;min-height:50px;padding:6px 8px;border-radius:8px}
     #payDialog .banknote:before{inset:5px}
     #payDialog .banknote:after{width:17px;height:17px;font-size:.68rem;right:5px;top:4px}
-    #payDialog .banknote .note-value{font-size:1.05rem}
-    #payDialog .banknote .note-mark{right:8px;bottom:5px;font-size:.92rem}
-    #payDialog .coin-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin-top:5px}
-    #payDialog .coin-btn{width:46px;height:46px;flex:initial;justify-self:center}
+    #payDialog .banknote .note-value{font-size:1.08rem}
+    #payDialog .banknote .note-mark{right:8px;bottom:5px;font-size:.95rem}
+    #payDialog .coin-grid{display:grid;grid-template-columns:repeat(8,minmax(0,1fr));gap:6px;margin-top:5px;flex:0 0 auto}
+    #payDialog .coin-btn{width:min(48px,11vw);height:min(48px,11vw);min-width:39px;min-height:39px;flex:initial;justify-self:center}
     #payDialog .coin-btn:after{width:16px;height:16px;font-size:.62rem}
     #payDialog .coin-btn .coin-value{font-size:.86rem}
-    #payDialog .coin-btn .coin-unit{font-size:.45rem}
-    #payDialog .tender-tools{gap:6px;margin-top:7px}
-    #payDialog .tender-tools button{min-height:31px;padding:0 8px;font-size:.7rem;border-radius:9px;flex:1}
-    #payDialog .change{margin-top:7px;padding:8px 10px;border-radius:13px}
-    #payDialog .change strong{font-size:1.3rem}
-    #payDialog .change-copy span{font-size:.68rem}
-    #payDialog .change-copy small{font-size:.7rem;margin-top:1px}
-    #payDialog .denoms{gap:4px;margin-top:6px}
-    #payDialog .denom{padding:4px 6px;font-size:.66rem;border-radius:8px}
-    #payDialog .modal-actions{grid-template-columns:1fr 2.15fr;gap:7px;margin-top:7px}
-    #payDialog .modal-actions button{min-height:44px;font-size:.86rem}
-    @media(max-height:700px){
-      #payDialog .pay-modal{padding:8px 10px}
-      #payDialog .pay-total{padding:6px 10px;margin:4px 0}
-      #payDialog .pay-total strong{font-size:1.65rem}
-      #payDialog .cash-grid button{min-height:36px}
-      #payDialog .tender-box{margin-top:5px;padding:6px 8px}
-      #payDialog .banknote{min-height:41px}
-      #payDialog .coin-btn{width:41px;height:41px}
-      #payDialog .tender-tools{margin-top:5px}
-      #payDialog .change{margin-top:5px;padding:6px 8px}
-      #payDialog .denoms{margin-top:4px}
-      #payDialog .modal-actions{margin-top:5px}
-      #payDialog .modal-actions button{min-height:40px}
+    #payDialog .coin-btn .coin-unit{font-size:.44rem}
+    #payDialog .tender-tools{gap:6px;margin-top:auto;padding-top:6px;flex:0 0 auto}
+    #payDialog .tender-tools button{min-height:31px;padding:0 8px;font-size:.69rem;border-radius:9px;flex:1}
+
+    /* Rückgeld bewusst dominant darstellen */
+    #payDialog .change{margin:0;padding:10px 12px 11px;border-radius:16px;background:linear-gradient(180deg,#101a14,#0d1511);border-color:#2a5c3b;box-shadow:0 8px 24px rgba(0,0,0,.24)}
+    #payDialog .change-head{align-items:center}
+    #payDialog .change-copy span{font-size:.72rem;letter-spacing:.1em}
+    #payDialog .change-copy small{font-size:.74rem;margin-top:2px}
+    #payDialog .change strong{font-size:2.45rem;line-height:1;letter-spacing:-.055em}
+    #payDialog .change.ok strong{color:#66e58f;text-shadow:0 0 24px rgba(67,209,117,.18)}
+    #payDialog .change.short strong{color:var(--danger)}
+    #payDialog .denoms{display:flex;align-items:center;flex-wrap:wrap;gap:8px;margin-top:9px;min-height:54px}
+    #payDialog .denom{display:flex;align-items:center;justify-content:center;gap:5px;min-height:48px;min-width:72px;padding:7px 11px;border-radius:12px;font-size:1rem;font-weight:1000;border:2px solid rgba(255,255,255,.18);box-shadow:inset 0 0 0 1px rgba(0,0,0,.18),0 3px 9px rgba(0,0,0,.2)}
+    #payDialog .denom.change-note{color:#fff;text-shadow:0 1px 2px rgba(0,0,0,.45)}
+    #payDialog .denom.change-note.note-5{background:linear-gradient(135deg,#6e7479,#a3a8ac 52%,#666c71)}
+    #payDialog .denom.change-note.note-10{background:linear-gradient(135deg,#9f3441,#cf6570 52%,#7d2935)}
+    #payDialog .denom.change-note.note-20{background:linear-gradient(135deg,#255a8d,#4b8ac4 52%,#1e4770)}
+    #payDialog .denom.change-note.note-50{background:linear-gradient(135deg,#a65b21,#de8a3f 52%,#874717)}
+    #payDialog .denom.change-note.note-100{background:linear-gradient(135deg,#2d6d58,#54a086 52%,#235444)}
+    #payDialog .denom.change-note.note-200{background:linear-gradient(135deg,#9b8b2e,#c9b94f 52%,#776a1d)}
+    #payDialog .denom.change-coin{min-width:58px;width:58px;height:58px;min-height:58px;padding:3px;border-radius:50%;color:#211b0f;text-shadow:0 1px rgba(255,255,255,.45);font-size:.82rem;text-align:center;line-height:1.05}
+    #payDialog .denom.change-coin.coin-2e{background:radial-gradient(circle at 50% 50%,#d3ad4f 0 47%,#c7cbd0 48% 73%,#9ea4aa 74% 100%)}
+    #payDialog .denom.change-coin.coin-1e{background:radial-gradient(circle at 50% 50%,#c7cbd0 0 47%,#d3ad4f 48% 73%,#aa8739 74% 100%)}
+    #payDialog .denom.change-coin.coin-gold{background:radial-gradient(circle at 38% 32%,#f2d471,#d1a73d 58%,#a67d20)}
+    #payDialog .denom.change-coin.coin-copper{background:radial-gradient(circle at 38% 32%,#d88a61,#aa5b37 58%,#7f3e24);color:#28160d}
+    #payDialog .modal-actions{grid-template-columns:.75fr 2.25fr;gap:8px;margin:0}
+    #payDialog .modal-actions button{min-height:50px;font-size:.91rem}
+
+    @media(min-width:760px){
+      #payDialog .pay-modal{padding-left:max(20px,calc((100vw - 980px)/2));padding-right:max(20px,calc((100vw - 980px)/2))}
+      #payDialog #payContent{grid-template-columns:minmax(0,1.35fr) minmax(300px,.65fr);grid-template-rows:auto auto auto minmax(0,1fr) auto;column-gap:18px;row-gap:8px}
+      #payDialog .pay-total{grid-column:1;grid-row:1}
+      #payDialog #payContent>.cash-label{grid-column:1;grid-row:2}
+      #payDialog .cash-grid{grid-column:1;grid-row:3}
+      #payDialog .tender-box{grid-column:1;grid-row:4/6}
+      #payDialog .change{grid-column:2;grid-row:1/5;display:flex;flex-direction:column;justify-content:center;padding:22px}
+      #payDialog .change-head{display:block;text-align:center}
+      #payDialog .change-copy small{margin-top:6px}
+      #payDialog .change strong{display:block;font-size:4.2rem;margin-top:12px}
+      #payDialog .denoms{justify-content:center;margin-top:22px;gap:12px}
+      #payDialog .denom{min-width:94px;min-height:60px;font-size:1.2rem}
+      #payDialog .denom.change-coin{width:72px;height:72px;min-width:72px;min-height:72px}
+      #payDialog .modal-actions{grid-column:2;grid-row:5}
+      #payDialog .banknote{min-height:68px}
+      #payDialog .coin-grid{grid-template-columns:repeat(8,1fr)}
+      #payDialog .coin-btn{width:58px;height:58px}
     }
-    @media(max-width:390px){
-      #payDialog .note-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
-      #payDialog .coin-grid{grid-template-columns:repeat(4,1fr)}
-      #payDialog .coin-btn{width:43px;height:43px}
-      #payDialog .cash-grid{grid-template-columns:repeat(3,1fr)}
+    @media(max-height:720px){
+      #payDialog .pay-modal{padding-top:calc(6px + env(safe-area-inset-top));padding-bottom:calc(6px + env(safe-area-inset-bottom))}
+      #payDialog .modalhead{min-height:35px}
+      #payDialog .close{width:34px;height:34px}
+      #payDialog .pay-total{padding:5px 10px}
+      #payDialog .pay-total strong{font-size:1.7rem}
+      #payDialog .cash-grid button{min-height:35px}
+      #payDialog .tender-box{padding:6px 8px}
+      #payDialog .banknote{min-height:42px}
+      #payDialog .coin-btn{width:40px;height:40px;min-width:36px;min-height:36px}
+      #payDialog .tender-tools button{min-height:28px}
+      #payDialog .change{padding:7px 9px}
+      #payDialog .change strong{font-size:2.05rem}
+      #payDialog .denoms{margin-top:5px;min-height:45px;gap:5px}
+      #payDialog .denom{min-height:40px;min-width:62px;padding:5px 8px;font-size:.88rem}
+      #payDialog .denom.change-coin{width:48px;height:48px;min-width:48px;min-height:48px}
+      #payDialog .modal-actions button{min-height:42px}
+    }
+    @media(max-width:430px){
+      #payDialog .coin-grid{grid-template-columns:repeat(8,minmax(0,1fr));gap:3px}
+      #payDialog .coin-btn{width:min(43px,10vw);height:min(43px,10vw);min-width:34px;min-height:34px}
+      #payDialog .denom{font-size:.9rem}
     }
   </style>
 </head>
@@ -247,9 +290,10 @@
   function addTender(value){
     const t=totals(),amount=Number(value),current=Number(state.cashGiven||0);
     state.cashParts??=[];
-    // Wenn die bisherige Auswahl noch nicht reicht und der neue Geldwert die
-    // Rechnung alleine deckt, ersetzt er die unvollständige Auswahl.
-    if(current>0 && current<t.total-.001 && amount>=t.total-.001){
+    // Wenn der neu gewählte einzelne Geldwert die Rechnung alleine deckt,
+    // ersetzt er eine bestehende Auswahl. So wird z. B. bei 18 € aus
+    // 20 € -> 200 € nicht 220 €, sondern 200 €.
+    if(current>0 && amount>=t.total-.001){
       state.cashParts=[amount];
       setGiven(amount);
     }else{
@@ -269,7 +313,7 @@
     $$('[data-cash-set]').forEach(b=>b.classList.toggle('active',Math.abs(Number(b.dataset.cashSet)-given)<.001));
     if(given<=0){box.className='change';out.textContent='—';hint.textContent='Passend, Vorschlag oder Geld auswählen';denoms.innerHTML='';ok.disabled=true}
     else if(diff<-.001){box.className='change short';out.textContent=`− ${euro(Math.abs(diff))}`;hint.textContent=`Es fehlen ${euro(Math.abs(diff))}`;denoms.innerHTML='';ok.disabled=true}
-    else{box.className='change ok';out.textContent=euro(Math.max(0,diff));hint.textContent=diff<.001?'Passend – kein Rückgeld nötig':'Empfohlene Stückelung';denoms.innerHTML=diff>0?breakdown(diff).map(d=>`<span class="denom ${d.value<5?'coin':''}">${denomLabel(d)}</span>`).join(''):'';ok.disabled=false}
+    else{box.className='change ok';out.textContent=euro(Math.max(0,diff));hint.textContent=diff<.001?'Passend – kein Rückgeld nötig':'Empfohlene Stückelung';denoms.innerHTML=diff>0?breakdown(diff).map(d=>{const valueLabel=d.value>=1?String(d.value).replace('.',',')+' €':Math.round(d.value*100)+' ct';if(d.value>=5)return `<span class="denom change-note note-${Math.round(d.value)}">${d.count}× ${valueLabel}</span>`;const coinClass=d.value===2?'coin-2e':d.value===1?'coin-1e':d.value>=.10?'coin-gold':'coin-copper';return `<span class="denom change-coin ${coinClass}">${d.count}×<br>${valueLabel}</span>`}).join(''):'';ok.disabled=false}
   }
   function completeSale(){const l=cartLines(),t=totals(),given=Number(state.cashGiven||0);if(!l.length||given<t.total-.001)return;const id='o'+Date.now().toString(36)+'-'+Math.random().toString(36).slice(2,7);const order={id,originId:`${deviceId}:${id}`,sourceDeviceId:deviceId,sourceName:kassenname||'Dieses Gerät',date:new Date().toISOString(),total:t.total,qty:t.qty,payment:{method:'cash',given,change:Math.max(0,given-t.total)},lines:l.map(x=>({id:x.item.id,name:x.item.name,qty:x.qty,price:x.item.price}))};state.stats.orders=(state.stats.orders||0)+1;state.stats.revenue=(state.stats.revenue||0)+t.total;for(const x of order.lines){state.stats.items[x.id]??={name:x.name,qty:0,revenue:0};state.stats.items[x.id].name=x.name;state.stats.items[x.id].qty+=x.qty;state.stats.items[x.id].revenue+=x.qty*x.price}state.stats.history.unshift(order);state.stats.history=state.stats.history.slice(0,1000);save();state.cart={};state.cashGiven=0;state.cashParts=[];$('#payDialog').close();renderAll();toast(`Bezahlt · Rückgeld ${euro(order.payment.change)}`);haptic()}
   function undoLast(){const o=state.stats.history?.[0];if(!o)return toast('Kein Verkauf zum Stornieren');if(!confirm(`Letzten Verkauf über ${euro(o.total)} wirklich stornieren?`))return;state.stats.history.shift();state.stats.orders=Math.max(0,(state.stats.orders||0)-1);state.stats.revenue=Math.max(0,(state.stats.revenue||0)-o.total);for(const x of o.lines||[]){const s=state.stats.items[x.id];if(!s)continue;s.qty=Math.max(0,s.qty-x.qty);s.revenue=Math.max(0,s.revenue-x.qty*x.price);if(!s.qty&&!s.revenue)delete state.stats.items[x.id]}save();renderStats();toast('Letzter Verkauf storniert')}
