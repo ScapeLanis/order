@@ -1,26 +1,21 @@
-# Order Tally+
+# Order Tally Clean
 
-Mobile-first Bestell-/Kassenoberfläche für GitHub Pages.
+Eine mobile-first Kasse für GitHub Pages.
 
-## Funktionen
-
-- große Touch-Flächen für Handy und Tablet
-- Kategorien für Essen und Getränke
-- Warenkorb mit + / - Mengensteuerung
-- großer **Abschließen**-Button
-- abgeschlossene Bestellungen fließen automatisch in die Statistik
-- Statistik: Bestellanzahl, verkaufte Artikel, Umsatz pro Artikel und Gesamtumsatz
+## Enthalten
+- Cleanes Dark-UI für Handy/Tablet/Desktop
+- Kasse / Statistik / Menü als klare Hauptnavigation
+- Smarte Bargeld-Schnelltasten + automatische Rückgeldberechnung
+- Tages- und Gesamtstatistik
+- Letzten Verkauf stornieren
+- Verkaufsverlauf
+- Artikel als "Ausverkauft" markieren
 - CSV-Export
-- Menü direkt im Browser editierbar
-- Menü, Warenkorb-Konfiguration und Statistik via `localStorage` auf dem Gerät gespeichert
-- keine Abhängigkeiten, kein Build-Schritt — eine einzelne `index.html` reicht für GitHub Pages
+- JSON-Backup und Import
+- PWA/Offline-Unterstützung inkl. App-Icon
+- Übernimmt bestehende Order-Tally+-Daten, weil dieselben localStorage-Keys verwendet werden
 
-## Installation auf GitHub Pages
+## GitHub Pages
+Alle Dateien und den Ordner `icons` in die Root deines GitHub-Pages-Repositories hochladen. Danach unter Settings > Pages `main` und `/ (root)` veröffentlichen.
 
-Die vorhandene `index.html` im Pages-Repository durch diese Datei ersetzen und committen/pushen.
-
-## Wichtig zur Statistik
-
-Diese Version speichert die Verkaufsdaten **lokal im Browser des jeweiligen Geräts**. Das ist ideal, wenn an einem festen Handy/Tablet kassiert wird und kein Server nötig sein soll.
-
-Wenn mehrere Geräte gleichzeitig verkaufen und eine gemeinsame Statistik benötigt wird, muss ein Backend ergänzt werden (z. B. Supabase, Firebase oder eine kleine API/DB).
+Hinweis: Menü und Statistiken sind weiterhin lokal pro Gerät gespeichert. Für mehrere Kassen mit gemeinsamer Statistik wäre ein Backend (z.B. Supabase/Firebase) der nächste Schritt.
