@@ -81,3 +81,7 @@ Wenn eine ältere Version bereits installiert war und noch der alte Name oder da
 ## Datenspeicherung
 
 Verkäufe und Statistiken liegen ausschließlich im Browser dieses Geräts (`localStorage`). Bei mehreren Handys hat jedes Gerät seine eigene Statistik.
+
+
+## Bargeld-Auswahl
+Im Bezahlfenster stehen zuerst stilisierte Euro-Scheine (5–200 €), danach runde Euro-Münzen (2 € bis 1 Cent). Die Darstellung orientiert sich an den typischen Farben, verwendet aber keine exakten Reproduktionen offizieller Banknotenmotive.
