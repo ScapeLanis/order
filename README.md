@@ -13,6 +13,7 @@ Mobile Kasse für GitHub Pages, ohne Benutzerkonten und ohne externe Datenbank.
 - Tages- und Gesamtstatistik
 - Verkaufsverlauf und letzten Verkauf stornieren
 - CSV-Export sowie Backup/Import
+- **Tagesabschluss exportieren und mehrere Kassen zu einer Gesamtstatistik zusammenführen**
 - separates Menü in `menu.js`
 - installierbar als PWA mit eigenem Kassensystem-Icon
 - Offline-Cache über `sw.js`
@@ -78,9 +79,20 @@ Wenn eine ältere Version bereits installiert war und noch der alte Name oder da
 3. **Deploy from a branch**, Branch **main**, Ordner **/(root)** wählen.
 4. Speichern.
 
-## Datenspeicherung
+## Datenspeicherung und Gesamtstatistik
 
-Verkäufe und Statistiken liegen ausschließlich im Browser dieses Geräts (`localStorage`). Bei mehreren Handys hat jedes Gerät seine eigene Statistik.
+Verkäufe liegen weiterhin ausschließlich lokal im Browser des jeweiligen Geräts (`localStorage`). Es gibt keine externe Datenbank und keine Benutzerkonten.
+
+Für mehrere Handys kannst du die Statistiken trotzdem zusammenführen:
+
+1. Auf jedem Kassengerät unter **Statistik → Tagesabschluss exportieren** eine JSON-Datei erzeugen.
+2. Beim ersten Export vergibst du einmal einen Kassennamen, z. B. `Getränke 1` oder `Essen`. Dieser Name wird auf dem Gerät gespeichert.
+3. Auf einem Hauptgerät unter **Statistik → Abschlüsse zusammenführen** die Abschlussdateien auswählen. Du kannst mehrere Dateien gleichzeitig markieren.
+4. Die Ansichten **Heute** und **Gesamt**, Top-Artikel und der CSV-Export enthalten danach lokale und importierte Verkäufe gemeinsam.
+
+Jede Bestellung besitzt eine eindeutige Herkunft. Wenn dieselbe Abschlussdatei erneut importiert wird oder ein späterer Export derselben Kasse bereits bekannte Verkäufe enthält, werden diese **nicht doppelt gezählt**. Nur neue Bestellungen werden ergänzt.
+
+**Wichtig:** „Letzten Verkauf stornieren“ betrifft nur Verkäufe, die auf dem aktuellen Gerät entstanden sind. Importierte Abschlüsse bleiben unverändert.
 
 
 ## Bargeld-Auswahl
