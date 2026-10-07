@@ -31,9 +31,9 @@ Nur als normale Webseite reichen `index.html` und `menu.js`. Für die Nutzung wi
 
 Beim Abschluss zeigt das Kassensystem zuerst **Passend** und zusätzlich ein oder zwei sinnvolle Beträge an. Bei 11,00 € zum Beispiel typischerweise 12,00 € und 15,00 €.
 
-Darunter können Münzen und Scheine einzeln angetippt werden. Beispiel: Der Kunde gibt 12,00 € → `10 €` und `2 €` antippen. Mehrfaches Antippen ist möglich. Mit **Letzten Betrag** lässt sich die letzte Auswahl zurücknehmen, mit **Zurücksetzen** beginnt man wieder bei 0,00 €.
+Darunter können zuerst Scheine und danach Münzen einzeln angetippt werden. Beispiel: Der Kunde gibt 12,00 € → `10 €` und `2 €` antippen. Mehrfaches Antippen ist möglich. Mit **Letzte Eingabe löschen** lässt sich die letzte Auswahl zurücknehmen, mit **Alles zurücksetzen** beginnt man wieder bei 0,00 €.
 
-Der gegebene Betrag kann bei Bedarf weiterhin manuell eingegeben werden. Das Rückgeld und eine mögliche Stückelung werden sofort berechnet.
+Die manuelle Texteingabe wurde entfernt, damit der Bezahlbildschirm vollständig auf eine Handy-Seite passt. **Zu zahlen, Geld-Auswahl, Rückgeld, empfohlene Stückelung und Verkauf abschließen** bleiben gleichzeitig sichtbar.
 
 ## Menü bearbeiten
 

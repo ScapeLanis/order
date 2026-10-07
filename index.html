@@ -45,6 +45,63 @@
     @media(max-width:1020px){.desktop-grid{grid-template-columns:72px minmax(0,1fr) 320px}.products{grid-template-columns:repeat(2,minmax(0,1fr))}.stats-grid{grid-template-columns:repeat(2,1fr)}.menu-form{grid-template-columns:1fr 1fr}.menu-form .wide{grid-column:1/-1}}
     @media(max-width:760px){body{padding-bottom:calc(150px + env(safe-area-inset-bottom))}.shell{padding:14px 12px 25px}.topbar{margin-bottom:13px}.brand p{max-width:220px}.desktop-grid{display:block}.rail,.cart-panel{display:none}.bottom-nav{display:grid}.mobile-cart{display:flex}.view:not(.active){display:none}.products{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}.product{min-height:132px;padding:13px}.hero{align-items:center}.hero p{font-size:.8rem}.stats-grid{grid-template-columns:repeat(2,1fr);gap:8px}.kpi{padding:13px}.kpi strong{font-size:1.25rem}.menu-form{grid-template-columns:1fr 1fr}.menu-form .namefield{grid-column:1/-1}.menu-form .savefield{grid-column:1/-1}.menu-form .savefield button{width:100%}.card{padding:13px}.barrow{grid-template-columns:minmax(70px,.9fr) 1.4fr auto}.top-actions .ghost-label{display:none}}
     @media(max-width:390px){.products{grid-template-columns:1fr 1fr}.p-name{font-size:.92rem}.p-icon{font-size:1.8rem}.cash-grid{grid-template-columns:repeat(2,1fr)}.note-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.coin-btn{width:56px;height:56px;flex-basis:56px}.stats-grid{grid-template-columns:1fr 1fr}}
+  
+    /* Kompakter Bezahl-Screen: alles ohne Scrollen sichtbar */
+    #payDialog{width:min(560px,calc(100% - 12px));max-height:calc(100dvh - 10px);overflow:hidden}
+    #payDialog .pay-modal{padding:11px;max-height:calc(100dvh - 12px);overflow:hidden;display:flex;flex-direction:column}
+    #payDialog .modalhead{min-height:36px}
+    #payDialog .modalhead h2{font-size:1rem}
+    #payDialog .close{width:36px;height:36px}
+    #payDialog .pay-total{padding:9px 12px;margin:7px 0 6px;border-radius:14px}
+    #payDialog .pay-total small{font-size:.72rem}
+    #payDialog .pay-total strong{font-size:1.9rem;margin-top:0}
+    #payDialog .cash-label{font-size:.7rem;margin-bottom:4px}
+    #payDialog .cash-grid{gap:6px;margin-top:5px}
+    #payDialog .cash-grid button{min-height:40px;border-radius:11px;font-size:.83rem;padding:0 6px}
+    #payDialog .tender-box{margin-top:7px;padding:8px 9px;border-radius:14px}
+    #payDialog .tender-head strong{font-size:1.25rem}
+    #payDialog .tender-head span{font-size:.68rem}
+    #payDialog .note-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:6px;margin-top:5px}
+    #payDialog .banknote{aspect-ratio:auto;min-height:47px;padding:6px 8px;border-radius:8px}
+    #payDialog .banknote:before{inset:5px}
+    #payDialog .banknote:after{width:17px;height:17px;font-size:.68rem;right:5px;top:4px}
+    #payDialog .banknote .note-value{font-size:1.05rem}
+    #payDialog .banknote .note-mark{right:8px;bottom:5px;font-size:.92rem}
+    #payDialog .coin-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin-top:5px}
+    #payDialog .coin-btn{width:46px;height:46px;flex:initial;justify-self:center}
+    #payDialog .coin-btn:after{width:16px;height:16px;font-size:.62rem}
+    #payDialog .coin-btn .coin-value{font-size:.86rem}
+    #payDialog .coin-btn .coin-unit{font-size:.45rem}
+    #payDialog .tender-tools{gap:6px;margin-top:7px}
+    #payDialog .tender-tools button{min-height:31px;padding:0 8px;font-size:.7rem;border-radius:9px;flex:1}
+    #payDialog .change{margin-top:7px;padding:8px 10px;border-radius:13px}
+    #payDialog .change strong{font-size:1.3rem}
+    #payDialog .change-copy span{font-size:.68rem}
+    #payDialog .change-copy small{font-size:.7rem;margin-top:1px}
+    #payDialog .denoms{gap:4px;margin-top:6px}
+    #payDialog .denom{padding:4px 6px;font-size:.66rem;border-radius:8px}
+    #payDialog .modal-actions{grid-template-columns:1fr 2.15fr;gap:7px;margin-top:7px}
+    #payDialog .modal-actions button{min-height:44px;font-size:.86rem}
+    @media(max-height:700px){
+      #payDialog .pay-modal{padding:8px 10px}
+      #payDialog .pay-total{padding:6px 10px;margin:4px 0}
+      #payDialog .pay-total strong{font-size:1.65rem}
+      #payDialog .cash-grid button{min-height:36px}
+      #payDialog .tender-box{margin-top:5px;padding:6px 8px}
+      #payDialog .banknote{min-height:41px}
+      #payDialog .coin-btn{width:41px;height:41px}
+      #payDialog .tender-tools{margin-top:5px}
+      #payDialog .change{margin-top:5px;padding:6px 8px}
+      #payDialog .denoms{margin-top:4px}
+      #payDialog .modal-actions{margin-top:5px}
+      #payDialog .modal-actions button{min-height:40px}
+    }
+    @media(max-width:390px){
+      #payDialog .note-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+      #payDialog .coin-grid{grid-template-columns:repeat(4,1fr)}
+      #payDialog .coin-btn{width:43px;height:43px}
+      #payDialog .cash-grid{grid-template-columns:repeat(3,1fr)}
+    }
   </style>
 </head>
 <body>
@@ -106,7 +163,7 @@
   </nav>
 
   <dialog id="cartDialog"><div class="modal"><div class="modalhead"><h2>Bestellung</h2><button class="close" data-close="cartDialog">×</button></div><div id="mobileCartContent"></div></div></dialog>
-  <dialog id="payDialog"><div class="modal"><div class="modalhead"><h2>Barzahlung</h2><button class="close" data-close="payDialog">×</button></div><div id="payContent"></div></div></dialog>
+  <dialog id="payDialog"><div class="modal pay-modal"><div class="modalhead"><h2>Barzahlung</h2><button class="close" data-close="payDialog">×</button></div><div id="payContent"></div></div></dialog>
   <div class="toast" id="toast"></div>
 
 <script src="./menu.js"></script>
@@ -123,7 +180,7 @@
   const euro=n=>new Intl.NumberFormat('de-DE',{style:'currency',currency:'EUR'}).format(Number(n)||0);
   const esc=s=>String(s??'').replace(/[&<>'"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c]));
   const load=(k,f)=>{try{const v=JSON.parse(localStorage.getItem(k));return v??clone(f)}catch{return clone(f)}};
-  const state={menu:load(MENU_KEY,defaults).map(x=>({...x,active:x.active!==false})),stats:load(STATS_KEY,{orders:0,revenue:0,items:{},history:[]}),cart:{},cashParts:[],category:'food',range:'today',nav:'sale'};
+  const state={menu:load(MENU_KEY,defaults).map(x=>({...x,active:x.active!==false})),stats:load(STATS_KEY,{orders:0,revenue:0,items:{},history:[]}),cart:{},cashParts:[],cashGiven:0,category:'food',range:'today',nav:'sale'};
   if(!Array.isArray(state.stats.history)) state.stats.history=[];
   if(!state.stats.items) state.stats.items={};
   const save=()=>{localStorage.setItem(MENU_KEY,JSON.stringify(state.menu));localStorage.setItem(STATS_KEY,JSON.stringify(state.stats))};
@@ -160,38 +217,52 @@
   function openCheckout(){
     const t=totals();if(!t.qty)return;$('#cartDialog').close();
     const suggestions=cashSuggestions(t.total).map((v,i)=>`<button class="quick-${i+1}" data-cash-set="${v.toFixed(2)}">${euro(v)}</button>`).join('');
-    const notes=TENDER_NOTES.map(v=>`<button class="banknote note-${Math.round(v)}" data-cash-add="${v.toFixed(2)}" aria-label="${moneyLabel(v)} Schein hinzufügen"><span class="note-value">${Math.round(v)} €</span><span class="note-meta">EURO · SCHEIN</span><span class="note-mark">€</span></button>`).join('');
+    const notes=TENDER_NOTES.map(v=>`<button class="banknote note-${Math.round(v)}" data-cash-add="${v.toFixed(2)}" aria-label="${moneyLabel(v)} Schein hinzufügen"><span class="note-value">${Math.round(v)} €</span><span class="note-mark">€</span></button>`).join('');
     const coins=TENDER_COINS.map(v=>{const cents=Math.round(v*100);const cls=v===2?'coin-2e':v===1?'coin-1e':v>=.10?'coin-gold':'coin-copper';const val=v>=1?String(v).replace('.',','):String(cents);const unit=v>=1?'EURO':'CENT';return `<button class="coin-btn ${cls}" data-cash-add="${v.toFixed(2)}" aria-label="${moneyLabel(v)} Münze hinzufügen"><span class="coin-value">${val}</span><span class="coin-unit">${unit}</span></button>`}).join('');
     $('#payContent').innerHTML=`<div class="pay-total"><small>Zu zahlen</small><strong>${euro(t.total)}</strong></div>
-      <div class="cash-label">Schnell</div>
+      <div class="cash-label">Schnellwahl</div>
       <div class="cash-grid"><button class="quick-match" data-cash-set="${t.total.toFixed(2)}">✓ Passend</button>${suggestions}</div>
       <div class="tender-box">
         <div class="tender-head"><span>GEGEBEN</span><strong id="givenAmount">0,00 €</strong></div>
-        <div class="cash-label" style="margin-top:12px">Scheine</div>
+        <div class="cash-label" style="margin-top:7px">Scheine</div>
         <div class="note-grid">${notes}</div>
-        <div class="cash-label" style="margin-top:12px">Münzen</div>
+        <div class="cash-label" style="margin-top:7px">Münzen</div>
         <div class="coin-grid">${coins}</div>
         <div class="tender-tools"><button data-cash-undo>↶ Letzte Eingabe löschen</button><button data-cash-clear>Alles zurücksetzen</button></div>
-        <details class="manual-toggle"><summary>Betrag manuell eingeben</summary><div class="cashwrap" style="margin-top:7px"><input id="cashGiven" inputmode="decimal" autocomplete="off" placeholder="z. B. 20,00" value="0,00"></div></details>
       </div>
       <div class="change" id="changeBox"><div class="change-head"><div class="change-copy"><span>RÜCKGELD</span><small id="changeHint">Passend, Vorschlag oder Geld auswählen</small></div><strong id="changeAmount">—</strong></div><div class="denoms" id="denominations"></div></div>
       <div class="modal-actions"><button class="ghost" data-close="payDialog">Zurück</button><button class="primary" id="confirmPay" disabled>Verkauf abschließen</button></div>`;
-    state.cashParts=[];updateChange(0);$('#payDialog').showModal()
+    state.cashParts=[];state.cashGiven=0;updateChange(0);$('#payDialog').showModal()
   }
-  function setGiven(value,track=false){const v=Math.max(0,Math.round(Number(value||0)*100)/100);const inp=$('#cashGiven');if(inp)inp.value=v.toFixed(2).replace('.',',');if(track)state.cashParts=[v];updateChange(v)}
-  function addTender(value){const current=parseCash($('#cashGiven')?.value),next=Math.round((current+Number(value))*100)/100;state.cashParts??=[];state.cashParts.push(Number(value));setGiven(next);haptic()}
-  function undoTender(){state.cashParts??=[];if(!state.cashParts.length)return;const last=state.cashParts.pop(),current=parseCash($('#cashGiven')?.value);setGiven(Math.max(0,Math.round((current-last)*100)/100));haptic()}
+  function setGiven(value,track=false){const v=Math.max(0,Math.round(Number(value||0)*100)/100);state.cashGiven=v;if(track)state.cashParts=[v];updateChange(v)}
+  function addTender(value){
+    const t=totals(),amount=Number(value),current=Number(state.cashGiven||0);
+    state.cashParts??=[];
+    // Wenn die bisherige Auswahl noch nicht reicht und der neue Geldwert die
+    // Rechnung alleine deckt, ersetzt er die unvollständige Auswahl.
+    if(current>0 && current<t.total-.001 && amount>=t.total-.001){
+      state.cashParts=[amount];
+      setGiven(amount);
+    }else{
+      const next=Math.round((current+amount)*100)/100;
+      state.cashParts.push(amount);
+      setGiven(next);
+    }
+    haptic()
+  }
+  function undoTender(){state.cashParts??=[];if(!state.cashParts.length)return;const last=state.cashParts.pop(),current=Number(state.cashGiven||0);setGiven(Math.max(0,Math.round((current-last)*100)/100));haptic()}
   function clearTender(){state.cashParts=[];setGiven(0)}
   function updateChange(setValue){
-    const t=totals(),inp=$('#cashGiven');if(!inp)return;const given=parseCash(setValue===undefined?inp.value:setValue);if(setValue!==undefined)inp.value=given.toFixed(2).replace('.',',');
+    const t=totals();if(setValue!==undefined)state.cashGiven=Math.max(0,Math.round(Number(setValue||0)*100)/100);const given=Number(state.cashGiven||0);
     const shown=$('#givenAmount');if(shown)shown.textContent=euro(given);
     const diff=Math.round((given-t.total)*100)/100,box=$('#changeBox'),out=$('#changeAmount'),hint=$('#changeHint'),denoms=$('#denominations'),ok=$('#confirmPay');
+    if(!box||!out||!hint||!denoms||!ok)return;
     $$('[data-cash-set]').forEach(b=>b.classList.toggle('active',Math.abs(Number(b.dataset.cashSet)-given)<.001));
     if(given<=0){box.className='change';out.textContent='—';hint.textContent='Passend, Vorschlag oder Geld auswählen';denoms.innerHTML='';ok.disabled=true}
     else if(diff<-.001){box.className='change short';out.textContent=`− ${euro(Math.abs(diff))}`;hint.textContent=`Es fehlen ${euro(Math.abs(diff))}`;denoms.innerHTML='';ok.disabled=true}
     else{box.className='change ok';out.textContent=euro(Math.max(0,diff));hint.textContent=diff<.001?'Passend – kein Rückgeld nötig':'Empfohlene Stückelung';denoms.innerHTML=diff>0?breakdown(diff).map(d=>`<span class="denom ${d.value<5?'coin':''}">${denomLabel(d)}</span>`).join(''):'';ok.disabled=false}
   }
-  function completeSale(){const l=cartLines(),t=totals(),given=parseCash($('#cashGiven')?.value);if(!l.length||given<t.total-.001)return;const order={id:'o'+Date.now().toString(36),date:new Date().toISOString(),total:t.total,qty:t.qty,payment:{method:'cash',given,change:Math.max(0,given-t.total)},lines:l.map(x=>({id:x.item.id,name:x.item.name,qty:x.qty,price:x.item.price}))};state.stats.orders=(state.stats.orders||0)+1;state.stats.revenue=(state.stats.revenue||0)+t.total;for(const x of order.lines){state.stats.items[x.id]??={name:x.name,qty:0,revenue:0};state.stats.items[x.id].name=x.name;state.stats.items[x.id].qty+=x.qty;state.stats.items[x.id].revenue+=x.qty*x.price}state.stats.history.unshift(order);state.stats.history=state.stats.history.slice(0,1000);save();state.cart={};$('#payDialog').close();renderAll();toast(`Bezahlt · Rückgeld ${euro(order.payment.change)}`);haptic()}
+  function completeSale(){const l=cartLines(),t=totals(),given=Number(state.cashGiven||0);if(!l.length||given<t.total-.001)return;const order={id:'o'+Date.now().toString(36),date:new Date().toISOString(),total:t.total,qty:t.qty,payment:{method:'cash',given,change:Math.max(0,given-t.total)},lines:l.map(x=>({id:x.item.id,name:x.item.name,qty:x.qty,price:x.item.price}))};state.stats.orders=(state.stats.orders||0)+1;state.stats.revenue=(state.stats.revenue||0)+t.total;for(const x of order.lines){state.stats.items[x.id]??={name:x.name,qty:0,revenue:0};state.stats.items[x.id].name=x.name;state.stats.items[x.id].qty+=x.qty;state.stats.items[x.id].revenue+=x.qty*x.price}state.stats.history.unshift(order);state.stats.history=state.stats.history.slice(0,1000);save();state.cart={};state.cashGiven=0;state.cashParts=[];$('#payDialog').close();renderAll();toast(`Bezahlt · Rückgeld ${euro(order.payment.change)}`);haptic()}
   function undoLast(){const o=state.stats.history?.[0];if(!o)return toast('Kein Verkauf zum Stornieren');if(!confirm(`Letzten Verkauf über ${euro(o.total)} wirklich stornieren?`))return;state.stats.history.shift();state.stats.orders=Math.max(0,(state.stats.orders||0)-1);state.stats.revenue=Math.max(0,(state.stats.revenue||0)-o.total);for(const x of o.lines||[]){const s=state.stats.items[x.id];if(!s)continue;s.qty=Math.max(0,s.qty-x.qty);s.revenue=Math.max(0,s.revenue-x.qty*x.price);if(!s.qty&&!s.revenue)delete state.stats.items[x.id]}save();renderStats();toast('Letzter Verkauf storniert')}
   function rangeOrders(){return state.range==='today'?state.stats.history.filter(o=>localDateKey(o.date)===todayKey()):state.stats.history}
   function aggregateOrders(orders){const map={};let revenue=0,qty=0;for(const o of orders){revenue+=o.total||0;qty+=o.qty||0;for(const x of o.lines||[]){map[x.id]??={name:x.name,qty:0,revenue:0};map[x.id].qty+=x.qty;map[x.id].revenue+=x.qty*x.price}}return {orders:orders.length,revenue,qty,items:Object.values(map)}}
@@ -208,8 +279,6 @@
   function renderAll(){renderCategories();renderProducts();renderCart();renderStats();renderMenu();$('#statusLine').textContent=`${new Intl.DateTimeFormat('de-DE',{weekday:'long',day:'2-digit',month:'2-digit'}).format(new Date())} · lokal gespeichert`}
 
   document.addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;if(b.dataset.nav)setNav(b.dataset.nav);if(b.dataset.cat){state.category=b.dataset.cat;renderCategories();renderProducts()}if(b.dataset.add)add(b.dataset.add);if(b.dataset.inc)add(b.dataset.inc);if(b.dataset.dec)add(b.dataset.dec,-1);if('clearCart'in b.dataset)clearCart();if('checkout'in b.dataset)openCheckout();if(b.dataset.close)document.getElementById(b.dataset.close)?.close();if('cashSet'in b.dataset){state.cashParts=[];setGiven(Number(b.dataset.cashSet),true);haptic()}if('cashAdd'in b.dataset)addTender(Number(b.dataset.cashAdd));if('cashUndo'in b.dataset)undoTender();if('cashClear'in b.dataset)clearTender();if(b.dataset.range){state.range=b.dataset.range;renderStats()}if(b.dataset.toggle){const i=state.menu.find(x=>x.id===b.dataset.toggle);if(i){i.active=!i.active;save();renderMenu();renderProducts()}}if(b.dataset.edit)editItem(b.dataset.edit);if(b.dataset.delete&&confirm('Artikel wirklich löschen?')){state.menu=state.menu.filter(x=>x.id!==b.dataset.delete);delete state.cart[b.dataset.delete];save();renderAll()}});
-  document.addEventListener('input',e=>{if(e.target.id==='cashGiven'){state.cashParts=[];updateChange()}});
-  document.addEventListener('keydown',e=>{if(e.target.id==='cashGiven'&&e.key==='Enter'&&!$('#confirmPay')?.disabled)completeSale()});
   $('#itemForm').addEventListener('submit',submitItem);$('#mobileCheckout').addEventListener('click',openCheckout);$('#mobileCart').addEventListener('click',e=>{if(e.target.closest('#mobileCheckout'))return;$('#cartDialog').showModal()});$('#undoBtn').addEventListener('click',undoLast);$('#csvBtn').addEventListener('click',exportCSV);$('#backupBtn').addEventListener('click',backup);$('#importBtn').addEventListener('click',()=>$('#importFile').click());$('#importFile').addEventListener('change',e=>{if(e.target.files[0])importBackup(e.target.files[0]);e.target.value=''});$('#restoreMenuBtn').addEventListener('click',()=>{if(confirm('Aktuelles Menü aus menu.js übernehmen? Lokale Menüänderungen werden ersetzt.')){state.menu=clone(defaults).map(x=>({...x,active:x.active!==false}));state.cart={};save();renderAll();toast('Menü aus menu.js übernommen')}});$('#fullscreenBtn').addEventListener('click',()=>{if(!document.fullscreenElement)document.documentElement.requestFullscreen?.();else document.exitFullscreen?.()});
   document.addEventListener('click',e=>{if(e.target.closest('#confirmPay'))completeSale()});
 
